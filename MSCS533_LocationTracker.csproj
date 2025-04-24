@@ -4,6 +4,11 @@
 		<UseMaui>true</UseMaui>
 		<UseMauiMaps>true</UseMauiMaps>
 		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<IOSRuntimeVersion>18.3</IOSRuntimeVersion> <!-- Set the version you want here -->
+		  <AppleSdkVersion>18.3</AppleSdkVersion>  <!-- Force usage of SDK 18.2 -->
+
+		<_DeviceName>:v2:runtime=com.apple.CoreSimulator.SimRuntime.iOS-18-3,devicetype=com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro</_DeviceName>
+
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
@@ -69,5 +74,12 @@
 
 	</ItemGroup>
 
+	<Target Name="Run">
+		<PropertyGroup>
+			<RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
+		</PropertyGroup>
+		<Exec Command="dotnet build -f net8.0-ios -c Debug" />
+		<Exec Command="dotnet build -f net8.0-ios -c Debug /t:Run" />
+	</Target>
 
 </Project>
