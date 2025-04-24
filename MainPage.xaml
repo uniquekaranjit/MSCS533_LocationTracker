@@ -1,0 +1,19 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="MSCS533_LocationTracker.MainPage"
+             Title="MainView">
+
+    <Grid>
+        <maps:Map x:Name="Map"
+                  IsShowingUser="True"
+                  MapType="Street"
+                  VerticalOptions="FillAndExpand" />
+
+        <Button Text="Start Tracking"
+                Clicked="OnStartTrackingClicked"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Margin="0,0,0,20"/>
+    </Grid>
+</ContentPage>
