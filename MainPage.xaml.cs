@@ -172,8 +172,8 @@ public partial class MainPage : ContentPage
         // Add a blue dot for the simulated location
         AddHeatPoint(userLoc);
 
-        // Add the location to the red line path
-        pathLine.Geopath.Add(new Location(location.Latitude, location.Longitude));
+        // Add only the points along the circumference of the circle to the red line path
+        AddCircumferencePoints(location);
 
         // Add the red line to the map if it's not already added
         if (!Map.MapElements.Contains(pathLine))
@@ -250,6 +250,26 @@ public partial class MainPage : ContentPage
         {
             var center = Map.VisibleRegion.Center;
             Map.MoveToRegion(MapSpan.FromCenterAndRadius(center, Distance.FromKilometers(currentZoomLevel)));
+        }
+    }
+
+    private void AddCircumferencePoints(Location center)
+    {
+        const int numberOfPoints = 36; // Number of points to approximate the circle (higher = smoother)
+        const double radiusInMeters = 5; // Radius of the circle in meters
+
+        for (int i = 0; i < numberOfPoints; i++)
+        {
+            double angle = 2 * Math.PI * i / numberOfPoints; // Angle in radians
+            double offsetX = radiusInMeters * Math.Cos(angle); // X offset
+            double offsetY = radiusInMeters * Math.Sin(angle); // Y offset
+
+            // Convert the offsets to latitude and longitude
+            double latitudeOffset = offsetY / 111320; // Approx. meters per degree latitude
+            double longitudeOffset = offsetX / (111320 * Math.Cos(center.Latitude * Math.PI / 180)); // Adjust for longitude
+
+            var point = new Location(center.Latitude + latitudeOffset, center.Longitude + longitudeOffset);
+            pathLine.Geopath.Add(point);
         }
     }
 }
