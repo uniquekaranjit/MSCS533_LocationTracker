@@ -4,8 +4,6 @@
 		<UseMaui>true</UseMaui>
 		<UseMauiMaps>true</UseMauiMaps>
 		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-		<IOSRuntimeVersion>18.3</IOSRuntimeVersion> <!-- Set the version you want here -->
-		  <AppleSdkVersion>18.3</AppleSdkVersion>  <!-- Force usage of SDK 18.2 -->
 
 		<_DeviceName>:v2:runtime=com.apple.CoreSimulator.SimRuntime.iOS-18-3,devicetype=com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro</_DeviceName>
 
