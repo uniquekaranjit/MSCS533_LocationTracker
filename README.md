@@ -33,7 +33,7 @@ This project is a **Location Tracker** application built using .NET MAUI. It pro
     ```bash
     dotnet run -f net8.0-ios
     ```
-    **Note: The project has been setup for iOS 18.3, so please make sure the emulator has iOS18.3 and iPhone 16 Pro. 
+    **Note: The project has been setup for iOS 18.3, so please make sure the emulator has iOS18.3 and iPhone 16 Pro, and has been tested on that. 
 
     For Android:
     ```bash
