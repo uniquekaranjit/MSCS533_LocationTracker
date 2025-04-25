@@ -5,19 +5,37 @@
              Title="Location Tracker">
 
     <Grid>
-        <!-- Map -->
-        <maps:Map x:Name="Map"
-                  IsShowingUser="True"
-                  MapType="Street"
-                  VerticalOptions="FillAndExpand" />
+        <!-- Define Rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" /> <!-- Title Bar -->
+            <RowDefinition Height="*" />  <!-- Map -->
+        </Grid.RowDefinitions>
 
-        <!-- Zoom Controls -->
-        <StackLayout Orientation="Horizontal"
-                     HorizontalOptions="End"
-                     VerticalOptions="End"
-                     Margin="10">
-            <Button Text="+" Clicked="OnZoomInClicked" WidthRequest="50" HeightRequest="50" />
-            <Button Text="-" Clicked="OnZoomOutClicked" WidthRequest="50" HeightRequest="50" />
-        </StackLayout>
+        <!-- Title Bar -->
+        <Grid BackgroundColor="#673ab7" Grid.Row="0">
+            <Label Text="MainView"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   TextColor="White"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+        </Grid>
+
+        <!-- Map -->
+        <Grid Grid.Row="1">
+            <maps:Map x:Name="Map"
+                      IsShowingUser="True"
+                      MapType="Street"
+                      VerticalOptions="FillAndExpand" />
+
+            <!-- Zoom Controls -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         VerticalOptions="End"
+                         Margin="10">
+                <Button Text="+" Clicked="OnZoomInClicked" WidthRequest="50" HeightRequest="50" />
+                <Button Text="-" Clicked="OnZoomOutClicked" WidthRequest="50" HeightRequest="50" />
+            </StackLayout>
+        </Grid>
     </Grid>
 </ContentPage>
