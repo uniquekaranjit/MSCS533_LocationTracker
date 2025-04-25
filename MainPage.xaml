@@ -2,18 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              x:Class="MSCS533_LocationTracker.MainPage"
-             Title="MainView">
+             Title="Location Tracker">
 
     <Grid>
+        <!-- Map -->
         <maps:Map x:Name="Map"
                   IsShowingUser="True"
                   MapType="Street"
                   VerticalOptions="FillAndExpand" />
 
-        <Button Text="Start Tracking"
-                Clicked="OnStartTrackingClicked"
-                VerticalOptions="End"
-                HorizontalOptions="Center"
-                Margin="0,0,0,20"/>
+        <!-- Zoom Controls -->
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="10">
+            <Button Text="+" Clicked="OnZoomInClicked" WidthRequest="50" HeightRequest="50" />
+            <Button Text="-" Clicked="OnZoomOutClicked" WidthRequest="50" HeightRequest="50" />
+        </StackLayout>
     </Grid>
 </ContentPage>
